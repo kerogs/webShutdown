@@ -4,13 +4,17 @@ from configparser import ConfigParser
 from colorama import Fore, init
 import logging
 
+# from helpers.path import get_base_path
+
 PATH_PROJECT = os.path.dirname(os.path.abspath(__file__))
+# PATH_PROJECT = "."
+# PATH_PROJECT = get_base_path()
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename=f'{PATH_PROJECT}\server.log', encoding='utf-8', level=logging.DEBUG)
 
 config = ConfigParser()
-config.read(f'{PATH_PROJECT}/config.ini')
+config.read(f'{PATH_PROJECT}\config.ini')
 
 init(autoreset=True)
 

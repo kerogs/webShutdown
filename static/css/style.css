@@ -46,7 +46,7 @@ body {
   transform: translateY(0);
 }
 .ccenter form button[type=submit] {
-  transition: 1s;
+  transition: 0.7s;
   width: 100%;
   padding: 10px;
   border: none;

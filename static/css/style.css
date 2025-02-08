@@ -19,6 +19,9 @@ body {
 .ccenter h1 {
   text-align: center;
   margin-bottom: 20px;
+  animation: 1.5s spawnAnimation forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
 }
 .ccenter form {
   display: flex;
@@ -34,12 +37,14 @@ body {
   color: #050504;
   background: #fff;
   outline: none;
+  transition: 0.7s;
+  animation: 1.5s spawnAnimation ease-in-out;
 }
 .ccenter form input[type=password]:valid {
-  border: 1px solid hsl(10, 98%, 58%);
+  border: 1px solid #fd4e2b;
 }
 .ccenter form input[type=password]:valid + button[type=submit] {
-  background: hsl(10, 98%, 58%);
+  background: #fd4e2b;
   color: #fff;
   cursor: pointer;
   opacity: 1;
@@ -52,14 +57,28 @@ body {
   border: none;
   border-radius: 5px;
   font-size: 16px;
-  color: hsl(10, 98%, 58%);
-  border: 1px solid hsl(10, 98%, 58%);
+  color: #fd4e2b;
+  border: 1px solid #fd4e2b;
   background: #fff;
   opacity: 0;
   cursor: default;
   transform: translateY(100px);
 }
 
+@keyframes spawnAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 @media screen and (max-width: 600px) {
   .ccenter {
     width: 90vw;

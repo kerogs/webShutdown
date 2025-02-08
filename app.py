@@ -45,7 +45,7 @@ def index():
 def shutdown():
     password = request.form['password']
     if password == CONF_PASSWORD:
-        if CONF_CUSTOM_SHUTDOWN != False:
+        if CONF_CUSTOM_SHUTDOWN:
             logger.info("Shutting down...")
             os.system(CONF_CUSTOM_SHUTDOWN)
             return "Shutting down..."

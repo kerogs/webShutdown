@@ -1,4 +1,0 @@
-INFO:__main__:Server started
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 855-403-126
-INFO:werkzeug: * Detected change in 'E:\\app\\webShutdown\\app.py', reloading

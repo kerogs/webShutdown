@@ -73,6 +73,21 @@ body {
     }
 }
 
+.bottomRight {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    
+    padding: 10px;
+
+    svg{
+        color: $text;
+        $size: 36px;
+        width: $size;
+        height: $size;
+    }
+}
+
 @keyframes spawnAnimation{
     0%{
         opacity: 0;

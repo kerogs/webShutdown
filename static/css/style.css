@@ -65,6 +65,18 @@ body {
   transform: translateY(100px);
 }
 
+.bottomRight {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+}
+.bottomRight svg {
+  color: #050504;
+  width: 36px;
+  height: 36px;
+}
+
 @keyframes spawnAnimation {
   0% {
     opacity: 0;

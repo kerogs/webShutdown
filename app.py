@@ -28,11 +28,12 @@ CONF_PASSWORD = config['Login']['password']
 
 CONF_OS = config['Shutdown']['os']
 CONF_CUSTOM_SHUTDOWN = config['Shutdown']['custom_shutdown']
+if CONF_CUSTOM_SHUTDOWN == "False":
+    CONF_CUSTOM_SHUTDOWN = False
 
-if CONF_CUSTOM_SHUTDOWN == False:
-    if CONF_OS != "Windows" or CONF_OS != "Linux" or CONF_OS != "Mac":
-        print(f"{Fore.RED}Error OS not recognized")
-        # stop
+if CONF_CUSTOM_SHUTDOWN is False:
+    if CONF_OS not in ["Windows", "Linux", "Mac"]:
+        print(f"{Fore.RED}Error OS not recognized. in {Fore.YELLOW}config.ini{Fore.RED} you put {Fore.YELLOW}os={Fore.BLUE}{CONF_OS}{Fore.RED} but you can only use {Fore.BLUE}Windows|Linux|Mac{Fore.RED}.")
         exit()
 
 app = Flask(__name__)

@@ -14,7 +14,7 @@ Allows you to shut down the computer or execute a custom command after entering 
 |-|-|-|-|
 |debug|``False``|``True / False``|Use only for development|
 |local_share|``True``|``True / False``|If enabled, the site will be available on the local network. If not, only the host machine can access it.|
-|port|``5113``|Any port|The port to use to access the site (if 80), so you don't need to write the port.|
+|port|``5113``|Any port|The port to use to access the site, if ``80`` you don't need to write the port.|
 |os|``Windows``|``Windows / Linux / Mac``|Command to be used by default to shut down the computer/server (preconfigured command)|
 |custom_shutdown|``False``|``False`` or personalized action |Set to False to deactivate, otherwise write the command to be executed directly (automatically deactivates the default command).
 |password|``kerogs``|your desired password|Password to be entered in order to perform the action from the website|

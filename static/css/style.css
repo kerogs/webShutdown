@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #050504;
+}
+
+.ccenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ccenter h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.ccenter form {
+  display: flex;
+  flex-direction: column;
+}
+.ccenter form input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #050504;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #050504;
+  background: #fff;
+  outline: none;
+}
+.ccenter form input[type=password]:valid {
+  border: 1px solid hsl(10, 98%, 58%);
+}
+.ccenter form input[type=password]:valid + button[type=submit] {
+  background: hsl(10, 98%, 58%);
+  color: #fff;
+  cursor: pointer;
+  opacity: 1;
+  transform: translateY(0);
+}
+.ccenter form button[type=submit] {
+  transition: 1s;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: hsl(10, 98%, 58%);
+  border: 1px solid hsl(10, 98%, 58%);
+  background: #fff;
+  opacity: 0;
+  cursor: default;
+  transform: translateY(100px);
+}
+
+@media screen and (max-width: 600px) {
+  .ccenter {
+    width: 90vw;
+  }
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,75 @@
+@import './themes/hk13';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: $background;
+    color: $text;
+}
+
+.ccenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid $text;
+            border-radius: 5px;
+            font-size: 16px;
+            color: $text;
+            background: #fff;
+            outline: none;
+
+            &:valid {
+                border: 1px solid $primary;
+
+                +button[type="submit"] {
+                    background: $primary;
+                    color: $background;
+                    cursor: pointer;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        button[type="submit"] {
+            transition: 1s;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: $primary;
+            border: 1px solid $primary;
+            background: $background;
+            opacity: 0;
+            cursor: default;
+            transform: translateY(100px);
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .ccenter{
+        width: 90vw;
+    }
+}

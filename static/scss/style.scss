@@ -1,4 +1,25 @@
-@import './themes/hk13';
+// @import './themes/hk13';
+
+// background: #fff,
+$background:#fff;
+$background-2:#d7d2d0;
+$bck:#191919;
+$text: #050504;
+$primary: #fd4e2b;
+$primary-2: hsl(10, 98%, 60%);
+$primary-3: hsl(10, 98%, 48%);
+$cyan:#00abff;
+$red: #f65d46;
+$blue: #0062ff;
+$yellow:#fffb00;
+$green:#7ef646;
+$purple:#9900ff;
+
+
+:root {
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --input-border: rgba(255, 255, 255, 0.2);
+}
 
 * {
     margin: 0;
@@ -8,103 +29,160 @@
 }
 
 body {
-    background: $background;
+    min-height: 100vh;
+    background: linear-gradient(135deg, darken($background, 20%), $background);
     color: $text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.ccenter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-    h1 {
+.shutdown-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    
+    .card-header {
         text-align: center;
-        margin-bottom: 20px;
-        animation: 1.5s spawnAnimation forwards;
-        animation-delay: .5s;
-        opacity: 0;
+        margin-bottom: 2rem;
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            color: rgba($text, 0.7);
+            font-size: 0.9rem;
+        }
     }
+}
 
-    form {
-        display: flex;
-        flex-direction: column;
-
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid $text;
-            border-radius: 5px;
-            font-size: 16px;
-            color: $text;
-            background: #fff;
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+    
+    input {
+        width: 100%;
+        padding: 1rem;
+        background: transparent;
+        border: 2px solid var(--input-border);
+        border-radius: 10px;
+        color: $text;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        
+        &:focus {
+            border-color: $primary;
             outline: none;
-            transition: .7s;
-            animation: 1.5s spawnAnimation ease-in-out;
-
-            &:valid {
-                border: 1px solid $primary;
-
-                +button[type="submit"] {
-                    background: $primary;
-                    color: $background;
-                    cursor: pointer;
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            & + label {
+                transform: translateY(-160%) scale(0.8);
+                color: $primary;
             }
         }
-
-        button[type="submit"] {
-            transition: .7s;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            color: $primary;
-            border: 1px solid $primary;
-            background: $background;
-            opacity: 0;
-            cursor: default;
-            transform: translateY(100px);
+        
+        &:not(:placeholder-shown) + label {
+            // transform: translateY(-120%) scale(0.8);
         }
     }
-}
-
-.bottomRight {
-    position: fixed;
-    bottom: 0;
-    right: 0;
     
-    padding: 10px;
-
-    svg{
-        color: $text;
-        $size: 36px;
-        width: $size;
-        height: $size;
+    label {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        color: rgba($text, 0.7);
+        transition: all 0.3s ease;
+        pointer-events: none;
     }
 }
 
-@keyframes spawnAnimation{
-    0%{
-        opacity: 0;
-        transform: scale(1.5);
+button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: $primary;
+    color: $background;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($primary, 0.3);
     }
-    50%{
-        opacity: 1;
-        transform: scale(.9);
+    
+    &:active {
+        transform: translateY(0);
     }
-    100%{
+}
+
+.github-link {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    color: $text;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    
+    &:hover {
         opacity: 1;
-        transform: scale(1);
+    }
+}
+
+.shutdown-message {
+    text-align: center;
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba($text, 0.3);
+        border-top-color: $primary;
+        border-radius: 50%;
+        margin: 0 auto 2rem;
+        animation: spin 1s linear infinite;
+    }
+    
+    h2 {
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        color: rgba($text, 0.7);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
 
 @media screen and (max-width: 600px) {
-    .ccenter{
-        width: 90vw;
+    .shutdown-card {
+        margin: 1rem;
+    }
+    
+    .github-link {
+        bottom: 1rem;
+        right: 1rem;
     }
 }

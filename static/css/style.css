@@ -1,3 +1,8 @@
+:root {
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --input-border: rgba(255, 255, 255, 0.2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,93 +11,143 @@
 }
 
 body {
-  background: #fff;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #cccccc, #fff);
   color: #050504;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ccenter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.ccenter h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  animation: 1.5s spawnAnimation forwards;
-  animation-delay: 0.5s;
-  opacity: 0;
-}
-.ccenter form {
-  display: flex;
-  flex-direction: column;
-}
-.ccenter form input[type=password] {
+.container {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #050504;
-  border-radius: 5px;
-  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.shutdown-card {
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.shutdown-card .card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.shutdown-card .card-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.shutdown-card .card-header .subtitle {
+  color: rgba(5, 5, 4, 0.7);
+  font-size: 0.9rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.input-group input {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
   color: #050504;
-  background: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.input-group input:focus {
+  border-color: #fd4e2b;
   outline: none;
-  transition: 0.7s;
-  animation: 1.5s spawnAnimation ease-in-out;
 }
-.ccenter form input[type=password]:valid {
-  border: 1px solid #fd4e2b;
+.input-group input:focus + label {
+  transform: translateY(-160%) scale(0.8);
+  color: #fd4e2b;
 }
-.ccenter form input[type=password]:valid + button[type=submit] {
+.input-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: rgba(5, 5, 4, 0.7);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
   background: #fd4e2b;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  opacity: 1;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(253, 78, 43, 0.3);
+}
+button:active {
   transform: translateY(0);
 }
-.ccenter form button[type=submit] {
-  transition: 0.7s;
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #fd4e2b;
-  border: 1px solid #fd4e2b;
-  background: #fff;
-  opacity: 0;
-  cursor: default;
-  transform: translateY(100px);
-}
 
-.bottomRight {
+.github-link {
   position: fixed;
-  bottom: 0;
-  right: 0;
-  padding: 10px;
-}
-.bottomRight svg {
+  bottom: 2rem;
+  right: 2rem;
   color: #050504;
-  width: 36px;
-  height: 36px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.github-link:hover {
+  opacity: 1;
 }
 
-@keyframes spawnAnimation {
-  0% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+.shutdown-message {
+  text-align: center;
+}
+.shutdown-message .spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(5, 5, 4, 0.3);
+  border-top-color: #fd4e2b;
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  animation: spin 1s linear infinite;
+}
+.shutdown-message h2 {
+  margin-bottom: 1rem;
+}
+.shutdown-message p {
+  color: rgba(5, 5, 4, 0.7);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 @media screen and (max-width: 600px) {
-  .ccenter {
-    width: 90vw;
+  .shutdown-card {
+    margin: 1rem;
+  }
+  .github-link {
+    bottom: 1rem;
+    right: 1rem;
   }
 }/*# sourceMappingURL=style.css.map */

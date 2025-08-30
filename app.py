@@ -52,17 +52,17 @@ def shutdown():
     if password == CONF_PASSWORD:
         if CONF_CUSTOM_SHUTDOWN:
             logger.info("Shutting down...")
+            return render_template('shutdown.html')  # Afficher la page de shutdown
             os.system(CONF_CUSTOM_SHUTDOWN)
-            return "Shutting down..."
         else:
             if(CONF_OS == "Windows"):
                 logger.info("Shutting down...")
+                return render_template('shutdown.html')  # Afficher la page de shutdown
                 os.system("shutdown /s /t 1")
-                return "Shutting down..."
             elif(CONF_OS == "Linux") or (CONF_OS == "Mac"):
                 logger.info("Shutting down...")
+                return render_template('shutdown.html')  # Afficher la page de shutdown
                 os.system("shutdown now")
-                return "Shutting down..."
             else:
                 logger.error("Error OS not recognized")
                 return "Error OS not recognized", 500

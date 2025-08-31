@@ -57,12 +57,12 @@ def shutdown():
         else:
             if(CONF_OS == "Windows"):
                 logger.info("Shutting down...")
+                os.system("shutdown /s /t 5")
                 return render_template('shutdown.html')  # Afficher la page de shutdown
-                os.system("shutdown /s /t 1")
             elif(CONF_OS == "Linux") or (CONF_OS == "Mac"):
                 logger.info("Shutting down...")
-                return render_template('shutdown.html')  # Afficher la page de shutdown
                 os.system("shutdown now")
+                return render_template('shutdown.html')  # Afficher la page de shutdown
             else:
                 logger.error("Error OS not recognized")
                 return "Error OS not recognized", 500

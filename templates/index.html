@@ -20,7 +20,7 @@
             <form action="/shutdown" method="post" class="shutdown-form">
                 <div class="input-group">
                     <input type="password" id="password" name="password" required>
-                    <label for="password">Password</label>
+                    <label id="passwordLabel" for="password">Password</label>
                 </div>
                 <button type="submit">
                     <span class="button-text">Shutdown System</span>
@@ -29,6 +29,23 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('password');
+            const label = document.getElementById('passwordLabel');
+
+            passwordInput.addEventListener('focus', function () {
+                passwordInput.classList.add('active');
+            });
+
+            passwordInput.addEventListener('blur', function () {
+                if (!this.value) {
+                    passwordInput.classList.remove('active');
+                }
+            });
+        });
+    </script>
 
     <a href="https://github.com/kerogs/webShutdown" target="_blank" class="github-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-2 -2 24 24">

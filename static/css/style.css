@@ -73,6 +73,10 @@ body {
   transform: translateY(-160%) scale(0.8);
   color: #fd4e2b;
 }
+.input-group input.active + label {
+  transform: translateY(-160%) scale(0.8);
+  color: #fd4e2b;
+}
 .input-group label {
   position: absolute;
   left: 1rem;

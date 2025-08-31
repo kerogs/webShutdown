@@ -93,7 +93,12 @@ body {
                 color: $primary;
             }
         }
-        
+
+        &.active + label {
+            transform: translateY(-160%) scale(0.8);
+            color: $primary;
+        }
+
         &:not(:placeholder-shown) + label {
             // transform: translateY(-120%) scale(0.8);
         }
